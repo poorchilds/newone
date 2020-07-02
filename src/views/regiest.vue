@@ -1,26 +1,16 @@
 <template>
   <div class="login">
     <!-- 头部 -->
-    <login-title router="/login">
+    <pagetitle router="/login">
       <template>注册</template>
-    </login-title>
+    </pagetitle>
     <!-- logo -->
     <logo />
     <!-- 表单 -->
     <div class="login-form">
       <van-form @submit="onSubmit">
-        <van-field
-          class="inp"
-          :rules="relusUsername"
-          v-model="username"
-          placeholder="用户名"
-        />
-        <van-field
-          class="inp"
-          :rules="relusNickname"
-          v-model="nickname"
-          placeholder="昵称"
-        />
+        <van-field class="inp" :rules="relusUsername" v-model="username" placeholder="用户名" />
+        <van-field class="inp" :rules="relusNickname" v-model="nickname" placeholder="昵称" />
         <van-field
           class="inp"
           v-model="password"
@@ -29,15 +19,7 @@
           :rules="relusPassword"
         />
         <div style="margin: 16px; margin-top:50px;">
-          <van-button
-            round
-            block
-            type="info"
-            native-type="submit"
-            color="#cc3300"
-          >
-            提交
-          </van-button>
+          <van-button round block type="info" native-type="submit" color="#cc3300">提交</van-button>
         </div>
       </van-form>
     </div>
@@ -50,7 +32,6 @@
 </template>
 
 <script>
-import LoginTitle from '../components/login/login-title.vue'
 import logo from '../components/login/logo.vue'
 // import toggle from '../components/login/toggle.vue'
 export default {
@@ -114,7 +95,6 @@ export default {
     }
   },
   components: {
-    LoginTitle,
     logo
   }
 }
