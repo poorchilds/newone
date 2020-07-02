@@ -31,7 +31,7 @@ export default {
 .login-title {
   height: 50px;
   width: 100%;
-  border-bottom: 1px solid #757575;
+  // border-bottom: 1px solid #757575;
   display: flex;
   line-height: 50px;
   text-align: center;
@@ -42,6 +42,8 @@ export default {
   }
   .tit {
     flex: 1;
+    font-weight: 700;
+    font-size: 14px;
   }
 }
 </style>

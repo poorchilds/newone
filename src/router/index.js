@@ -19,15 +19,17 @@ import search from '../views/news/search.vue'
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
+
+    // ------------------登录注册-------------
     { path: '/login', name: 'login', component: login },
     { path: '/regiest', name: 'regiest', component: regiest },
-    // { path: '/home', name: 'home', component: home }, // 预留主页
+    // ------------------个人人中心----------------
     { path: '/user', name: 'user', component: user }, // 个人中心
     { path: '/editdata', name: 'editdata', component: editdata }, // 编辑质料
     { path: '/follow', name: 'follow', component: follow }, // 我的关注
     { path: '/commit', name: 'commit', component: commit }, // 跟帖
     { path: '/collect', name: 'collect', component: collect }, // 收藏
-
+    // ------------------index news  主页--------------------
     { path: '/', redirect: '/firstpage' }, // 重定项到index 主页
     { path: '/firstpage', name: 'firstpage', component: firstpage }, // index 主页
     { path: '/column', name: 'column', component: column }, // index 栏目
