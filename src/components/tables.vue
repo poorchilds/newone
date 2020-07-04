@@ -1,5 +1,5 @@
 <template>
-  <ul class="body">
+  <ul class="body" @click="clickfn">
     <li class="lis">
       <div class="left">
         <slot></slot>
@@ -19,6 +19,11 @@ export default {
   props: {},
   data() {
     return {}
+  },
+  methods: {
+    clickfn() {
+      this.$emit('click')
+    }
   },
   components: {},
   created() {}

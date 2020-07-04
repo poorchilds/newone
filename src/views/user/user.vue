@@ -1,15 +1,20 @@
 <template>
   <div class="user">
-    <div class="head">
+    <div class="head" @click="$router.push('/editdata')">
       <div class="img">
-        <img src="../../access/images/新闻详情/u80.png" alt />
+        <img :src="$axios.defaults.baseURL + userdata.head_img" alt />
       </div>
       <div class="nickname">
         <div class="nick-top">
-          <span class="iconfont iconxingbienan"></span>
-          火星网友
+          <span v-if="userdata.gender === 1" class="iconfont iconxingbienan"></span>
+          <span v-else class="iconfont iconxingbienv"></span>
+          {{ userdata.nickname }}
         </div>
-        <span class="time">2019-10-10</span>
+        <span class="time">
+          {{
+          userdata.create_date | time('YYYY-MM-DD')
+          }}
+        </span>
       </div>
       <div class="icon-ri">
         <span class="iconfont iconjiantou1"></span>
@@ -29,8 +34,8 @@
         <template>我的收藏</template>
         <template v-slot:cen>文章/视频</template>
       </tables>
-      <tables>
-        <template>我的收藏</template>
+      <tables @click="$router.push('/editdata')">
+        <template>设置</template>
       </tables>
     </div>
   </div>
@@ -41,14 +46,22 @@
 export default {
   props: {},
   data() {
-    return {}
+    return {
+      userdata: ''
+    }
   },
   components: {},
-  created() {}
+  async created() {
+    // console.log(this.$axios)
+    const id = localStorage.getItem('userid')
+    const res = await this.$axios.get(`/user/${id}`)
+    // console.log(res.data.data)
+    this.userdata = res.data.data
+  }
 }
 </script>
 
-<style scoped lang='less'>
+<style scoped lang="less">
 .user {
   // padding: 24px 10px 30px 25px;
   background-color: #f2f2f2;
@@ -68,6 +81,7 @@ export default {
         margin: auto;
         width: 70px;
         height: 70px;
+        border-radius: 50%;
       }
     }
     .nickname {

@@ -19,7 +19,6 @@ import search from '../views/news/search.vue'
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
-
     // ------------------登录注册-------------
     { path: '/login', name: 'login', component: login },
     { path: '/regiest', name: 'regiest', component: regiest },
@@ -38,5 +37,18 @@ const router = new VueRouter({
     { path: '/goodcommit', name: 'goodcommit', component: goodcommit }, // index 精彩跟帖
     { path: '/search', name: 'search', component: search } // index 搜索
   ]
+})
+const rout = ['/user']
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  if (rout.includes(to.fullPath)) {
+    if (token) {
+      next()
+    } else {
+      router.push('/login')
+    }
+  } else {
+    next()
+  }
 })
 export default router
